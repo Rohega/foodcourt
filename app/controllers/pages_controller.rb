@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   def welcome
     @restaurants = Restaurant.all
     @pages = Page.all
-    render :layout => false
+
   end
 
   def show
