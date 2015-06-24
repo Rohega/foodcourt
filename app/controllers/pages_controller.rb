@@ -10,8 +10,6 @@ class PagesController < ApplicationController
 
   def welcome
     @restaurants = Restaurant.all
-    @pages = Page.all
-
   end
 
   def show
@@ -40,6 +38,10 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_with(@page)
+  end
+
+  def search
+    @restaurants = Restaurant.search(params[:search])
   end
 
   private
