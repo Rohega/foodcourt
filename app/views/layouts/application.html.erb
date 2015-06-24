@@ -31,8 +31,8 @@
 
 <div class="brand">Restaurantes.com</div>
 <div class="address-bar"> Busca | Comparte | Disfruta</div>
-<%= render 'layouts/search' %>
 <% if params[:controller] == "pages"  %>
+    <%= render 'layouts/search' %>
     <%= render 'layouts/menu_header' %>
 <% end %>
 

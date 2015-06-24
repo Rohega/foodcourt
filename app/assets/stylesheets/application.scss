@@ -12,9 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
+
 @import "bootstrap-sprockets";
+@import "font-awesome";
 //@import "bootstrap";
 
 /* User sign in and sign forms. */
