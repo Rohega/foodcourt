@@ -8,7 +8,9 @@
       <hr>
     </div>
     <div class="col-md-12">
-      <%= image_tag @restaurant.photo.url(:big) %>
+      <div style="margin-left: 130px">
+        <%= image_tag @restaurant.photo.url(:big) %>
+      </div>
       <hr/>
       <p><%= @restaurant.description %></p>
     </div>
@@ -25,37 +27,18 @@
       </h2>
       <hr>
       <% @restaurant.dishs.each do |dish| %>
-          <div class="col-sm-4 text-center">
-            <%= link_to image_tag(dish.photo.url(:medium), :class => "img-responsive"), "#", :data => {:toggle => "modal", :target => "#myModal"} %>
+          <div class="col-sm-12 text-center">
+            <div style="float: left">
+              <%= image_tag(dish.photo.url(:medium), :class => "img-responsive") %>
+            </div>
+            <div style="float: right; width: 860px">
+              <p><%= dish.description %></p>
+            </div>
             <h3><%= dish.name %>
               <small>$<%= dish.price %></small>
             </h3>
           </div>
       <% end %>
-    </div>
-  </div>
-</div>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
     </div>
   </div>
 </div>

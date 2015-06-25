@@ -28,32 +28,14 @@
 </head>
 
 <body>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1746336048926833',
-      xfbml      : true,
-      version    : 'v2.3'
-    });
-  };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
 <div class="brand">Restaurantes.com</div>
-<div class="address-bar"> Busca | Comparte | Disfruta | <%= current_user ? current_user.role?(:superadmin) : "NADA DE NADA"%></div>
-<div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
+<div class="panel" style="width: 250px; float: none">
+  <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-block btn-social btn-lg btn-facebook"  do %>
+      <i class="fa fa-facebook"></i> Sign in with Facebook
+  <% end %>
 </div>
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<div class="address-bar"> Busca | Comparte | Disfruta </div>
 <% if params[:controller] == "pages"  %>
     <%= render 'layouts/search' %>
     <%= render 'layouts/menu_header' %>

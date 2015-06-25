@@ -15,7 +15,6 @@
  *= require font-awesome
  */
 
-
 @import "bootstrap-sprockets";
 @import "font-awesome";
 //@import "bootstrap";
@@ -46,3 +45,5 @@
   margin-bottom: 15px;
   padding: 7px 9px;
 }
+
+button.btn-facebook:hover{ background-color: #4C71A5; }
