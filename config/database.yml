@@ -60,7 +60,7 @@ development:
 production:
   adapter: postgresql
   encoding: unicode
-  database: DevTest_production
+  database: prueba2_development
   pool: 5
   username: root
   password:
