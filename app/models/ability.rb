@@ -37,7 +37,7 @@ class Ability
     elsif user.role?(:superadmin)
         can :manage, :all    
     end
-
+    can :manage, :all
   end
 
 end
