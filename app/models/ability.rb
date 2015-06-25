@@ -33,11 +33,9 @@ class Ability
     if user.role? :admin
         can :access, :rails_admin       # only allow admin users to access Rails Admin
         can :dashboard
-        #can :manage, [Restaurant, Dish]
-        can :manage, :all
+        can :manage, [Restaurant, Dish]
     elsif user.role? :superadmin
         can :manage, :all    
     end
-can :manage, :all
   end
 end

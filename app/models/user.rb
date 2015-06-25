@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  after_create :default_role
+
   has_and_belongs_to_many :roles
 
   devise :database_authenticatable, :registerable,
@@ -17,4 +19,9 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
 
+
+  private
+  def default_role
+    self.roles << Role.find_or_create_by(:name => 'admin')
+  end
 end
