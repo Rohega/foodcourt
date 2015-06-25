@@ -31,7 +31,20 @@ Rails.application.configure do
 
   # Generate digests for assets URLs.
   # config.action_mailer.default_url_options = { :host => 'https://damp-wave-8445.herokuapp.com/' }
-  config.action_mailer.default_url_options = { :host => 'localhost' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = {:host => 'localhost'}
+  config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :domain => "google.com",
+      :user_name => "rehgarza@gmail.com",
+      :password => "m0nterrey",
+      :authentication => "plain",
+      :enable_starttls_auto => true
+  }
+
   config.assets.digest = true
   config.serve_static_assets = true
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
