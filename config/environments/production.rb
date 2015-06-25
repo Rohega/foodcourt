@@ -30,6 +30,7 @@ Rails.application.configure do
   # config.assets.compile = false
 
   # Generate digests for assets URLs.
+  config.action_mailer.default_url_options = { :host => 'https://damp-wave-8445.herokuapp.com/' }
   config.assets.digest = true
   config.serve_static_assets = true
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
