@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: [:edit, :update, :destroy]
 
   respond_to :html
 
@@ -13,6 +13,7 @@ class PagesController < ApplicationController
   end
 
   def show
+    @page = Page.find_by_permalink(params[:permalink])
     respond_with(@page)
   end
 

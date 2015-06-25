@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624071053) do
+ActiveRecord::Schema.define(version: 20150625071212) do
 
   create_table "dishes", force: true do |t|
     t.string   "name"
@@ -35,7 +35,10 @@ ActiveRecord::Schema.define(version: 20150624071053) do
     t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "permalink"
   end
+
+  add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
 
   create_table "restaurants", force: true do |t|
     t.string   "name"
@@ -85,6 +88,12 @@ ActiveRecord::Schema.define(version: 20150624071053) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "role"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

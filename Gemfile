@@ -47,6 +47,12 @@ gem 'thinking-sphinx', '~> 3.1.0'
 
 gem 'font-awesome-rails'
 
+gem 'has_permalink'
+
+gem 'omniauth'
+
+gem	'omniauth-facebook'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

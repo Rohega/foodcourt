@@ -5,8 +5,11 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  validates :email, :presence => true
+  # validates :name, :presence => true, on: :create
+
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_attached_file :photo,
                     :styles => {
@@ -19,6 +22,38 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
 
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth['provider']
+      user.uid = auth['uid']
+      if auth['info']
+        user.name = auth['info']['name'] || ""
+        user.email = auth['info']['email'] || ""
+      end
+    end
+  end
+
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    if user
+      return user
+    else
+      registered_user = User.where(:email => auth.info.email).first()
+      if registered_user
+        return registered_user
+      else
+        user = User.create(name:auth.extra.raw_info.name,
+                            provider:auth.provider,
+                            uid:auth.uid,
+                            email:auth.info.email,
+                            password:Devise.friendly_token[0,20]
+                          )
+        user.skip_confirmation!
+        user.save!
+      end
+    end
+    user
+  end
 
   private
   def default_role

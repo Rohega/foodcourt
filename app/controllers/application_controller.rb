@@ -12,4 +12,5 @@ class ApplicationController < ActionController::Base
   def get_pages
     @pages = Page.all
   end
+
 end

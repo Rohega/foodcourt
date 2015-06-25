@@ -9,27 +9,27 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
-#default: &default
-#  adapter: mysql2
-#  encoding: utf8
-#  pool: 5
-#  username: root
-#  password: m0nt3rr3y
-#  socket: /var/run/mysqld/mysqld.sock
-#
-#development:
-#  <<: *default
-#  database: prueba2_development
-#
-#
+default: &default
+ adapter: mysql2
+ encoding: utf8
+ pool: 5
+ username: root
+ password: m0nt3rr3y
+ socket: /var/run/mysqld/mysqld.sock
+
 development:
-    adapter: mysql2
-    encoding: utf8
-    database: prueba2_development
-    pool: 5
-    username: root
-    password:
-    socket: /var/run/mysqld/mysqld.sock
+ <<: *default
+ database: prueba2_development
+
+
+# development:
+#     adapter: mysql2
+#     encoding: utf8
+#     database: prueba2_development
+#     pool: 5
+#     username: root
+#     password:
+#     socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

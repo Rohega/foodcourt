@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   resources :pages
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   post "pages/search" => "pages#search", as: :search
+
+  get '/page/:permalink' => 'pages#show', :as => "show_page"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
