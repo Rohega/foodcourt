@@ -1,5 +1,7 @@
 class Restaurant < ActiveRecord::Base
   has_many :dishs
+  has_permalink :name
+
 
     has_attached_file :photo,
                     :styles => {

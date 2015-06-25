@@ -45,6 +45,11 @@ class PagesController < ApplicationController
     @restaurants = Restaurant.search(params[:search])
   end
 
+  def show_restaurant
+    @restaurant = Restaurant.find_by_permalink(params[:permalink])
+    
+  end
+
   private
     def set_page
       @page = Page.find(params[:id])

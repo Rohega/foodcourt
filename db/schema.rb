@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625071212) do
+ActiveRecord::Schema.define(version: 20150625090215) do
 
   create_table "dishes", force: true do |t|
     t.string   "name"
@@ -51,7 +51,10 @@ ActiveRecord::Schema.define(version: 20150625071212) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "permalink"
   end
+
+  add_index "restaurants", ["permalink"], name: "index_restaurants_on_permalink", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

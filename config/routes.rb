@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/page/:permalink' => 'pages#show', :as => "show_page"
 
+  get '/restaurants/:permalink' => 'pages#show_restaurant', :as => "show_restaurant"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
