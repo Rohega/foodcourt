@@ -12,7 +12,7 @@
         <%= image_tag @restaurant.photo.url(:big) %>
       </div>
       <hr>
-      <h2 class="intro-text text-center">Direccion: 
+      <h2 class="intro-text text-center">Direccion:
         <strong><%= @restaurant.address %></strong>
       </h2>
       <hr>
@@ -30,19 +30,7 @@
         <strong><%= @restaurant.name %></strong>
       </h2>
       <hr>
-      <% @restaurant.dishs.each do |dish| %>
-          <div class="col-sm-12 text-center">
-            <div style="float: left">
-              <%= image_tag(dish.photo.url(:medium), :class => "img-responsive") %>
-            </div>
-            <div style="float: right; width: 860px">
-              <p><%= dish.description %></p>
-            </div>
-            <h3><%= dish.name %>
-              <small>$<%= dish.price %></small>
-            </h3>
-          </div>
-      <% end %>
+      <%= @restaurants %>
     </div>
   </div>
 </div>
