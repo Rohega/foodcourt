@@ -11,7 +11,11 @@
       <div style="margin-left: 130px">
         <%= image_tag @restaurant.photo.url(:big) %>
       </div>
-      <hr/>
+      <hr>
+      <h2 class="intro-text text-center">Direccion: 
+        <strong><%= @restaurant.address %></strong>
+      </h2>
+      <hr>
       <p><%= @restaurant.description %></p>
     </div>
     <div class="clearfix"></div>
