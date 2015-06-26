@@ -42,10 +42,7 @@ class PagesController < ApplicationController
   end
 
   def search
-    # @restaurants = PgSearch.multisearch(params[:search])
-
-    @restaurants = Restaurant.find_by_name(params[:search])
-
+    @restaurants = PgSearch.multisearch(params[:search])
   end
 
   def show_restaurant

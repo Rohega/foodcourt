@@ -14,9 +14,9 @@
     <% else %>
         <% @restaurants.each do |rest| %>
             <div class="col-sm-4 text-center">
-              <%= link_to image_tag(rest.photo.url(:big), :class => "img-responsive"), show_restaurant_path(rest) %>
-              <h3><%= rest.name %>
-                <small><%= rest.address %></small>
+              <%= link_to image_tag(rest.searchable.photo.url(:big), :class => "img-responsive"), show_restaurant_path(rest.searchable) %>
+              <h3><%= rest.searchable.name %>
+                <small><%= rest.searchable.address %></small>
               </h3>
             </div>
         <% end %>
