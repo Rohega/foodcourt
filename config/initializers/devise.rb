@@ -7,7 +7,6 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '631e525086ee3e73eb20cd76bec28fbcfd2f37661388b26d27271519c47a192fad299a072b1ddbebf347b8726e0d2d2b47a91a35c11451e5edd30a5c93dd16fc'
-  config.secret_key = '4e5bb872122159dccc5cd4bb48bdc247d1ab66567b12b25bb8c302420f8958180dbbd0c6a670cf308653076d014529a4321e32c8dd5acb834bc9c7e53bff6c0b'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -244,30 +243,12 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   if ENV["RAILS_ENV"] == "production"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "********************DEBERIA SER PRODUCTION******************************+"
-    puts "RAILS ENV: #{ENV["RAILS_ENV"]}"
-
     #heroku
+    config.secret_key = '631e525086ee3e73eb20cd76bec28fbcfd2f37661388b26d27271519c47a192fad299a072b1ddbebf347b8726e0d2d2b47a91a35c11451e5edd30a5c93dd16fc'
     config.omniauth :facebook, "1746336048926833", "4433e40e95cc5b3539991eb36d8f203b", provider_ignores_state: true
   elsif ENV["RAILS_ENV"] == "development"
-
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************************************+"
-    puts "**************************DEBERIA SER DEVELOPMENT************************+"
-    puts "RAILS ENV: #{ENV["RAILS_ENV"]}"
     #Localhost
+    config.secret_key = '4e5bb872122159dccc5cd4bb48bdc247d1ab66567b12b25bb8c302420f8958180dbbd0c6a670cf308653076d014529a4321e32c8dd5acb834bc9c7e53bff6c0b'
     config.omniauth :facebook, "859131540790031", "81be9672750f8cc9a430b8a73ccc1bfb", provider_ignores_state: true
   end
 
