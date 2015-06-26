@@ -12,7 +12,9 @@
           <h3>No se encontraron resultados.</h3>
         </div>
     <% else %>
-        <%= @restaurants %>
+        <% @restaurants.each do |r| %>
+            <%= r %>
+        <% end %>
     <% end %>
     <div class="clearfix"></div>
   </div>
