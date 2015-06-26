@@ -31,4 +31,17 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'Restaurant' do
+    exclude_fields :permalink
+  end
+
+  config.model 'Page' do
+    exclude_fields :permalink
+  end
+
+  # config.model 'User' do
+  #   exclude_fields :reset_password_sent_at, :remember_created_at, :sing_in_count, :current_sign_in_at, :last_sign_in_at
+  # end
+
 end

@@ -1,7 +1,13 @@
 class Restaurant < ActiveRecord::Base
+  include PgSearch
   has_many :dishs
   has_permalink :name
 
+  multisearchable :against => [:name, :description]
+
+  # pg_search_scope :restaurant_search, :associated_against => {
+  #                                  :dishs => [:name, :description],
+  #                              }
 
     has_attached_file :photo,
                     :styles => {
