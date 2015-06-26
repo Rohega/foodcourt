@@ -1,12 +1,10 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  after_create :default_role
+  #after_create :default_role
+  before_create :default_role
 
   has_and_belongs_to_many :roles
-
-  validates :email, :presence => true
-  # validates :name, :presence => true, on: :create
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
@@ -57,6 +55,16 @@ class User < ActiveRecord::Base
 
   private
   def default_role
-    self.roles << Role.find_or_create_by(:name => 'admin')
+    users = User.all
+
+    if users.size <= 0
+      self.roles << Role.find_or_create_by(:name => 'superadmin')
+    else
+      self.roles << Role.find_or_create_by(:name => 'admin')
+    end
+
+    self.role = self.roles.first.name
+    self.confirmed_at = Time.now
+
   end
 end

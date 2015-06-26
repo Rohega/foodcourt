@@ -29,14 +29,23 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     user ||= User.new # guest user
- 
-    if user.role? :admin
-        can :access, :rails_admin       # only allow admin users to access Rails Admin
-        can :dashboard
-        can :manage, [Restaurant, Dish]
-    elsif user.role? :superadmin
-        can :manage, :all    
+    #
+    # if user.role? :admin
+    #     can :access, :rails_admin       # only allow admin users to access Rails Admin
+    #     can :dashboard
+    #     can :manage, [Restaurant, Dish]
+    # elsif user.role? :superadmin
+    #     can :manage, :all
+    # end
+
+    if user.role == "admin"
+      can :access, :rails_admin       # only allow admin users to access Rails Admin
+      can :dashboard
+      can :manage, [Restaurant, Dish]
+    elsif user.role == "superadmin"
+      can :manage, :all
     end
+
   end
 
 end
