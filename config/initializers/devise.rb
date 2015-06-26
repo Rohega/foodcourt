@@ -243,11 +243,34 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  #heroku
-  config.omniauth :facebook, "1746336048926833", "4433e40e95cc5b3539991eb36d8f203b", provider_ignores_state: true, group: :production
+  if ENV["RAILS_ENV"] == "production"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "********************DEBERIA SER PRODUCTION******************************+"
+    puts "RAILS ENV: #{ENV["RAILS_ENV"]}"
 
-  #Localhost
-  config.omniauth :facebook, "859131540790031", "81be9672750f8cc9a430b8a73ccc1bfb", provider_ignores_state: true,   group: :development
+    #heroku
+    config.omniauth :facebook, "1746336048926833", "4433e40e95cc5b3539991eb36d8f203b", provider_ignores_state: true
+  elsif ENV["RAILS_ENV"] == "development"
+
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************************************+"
+    puts "**************************DEBERIA SER DEVELOPMENT************************+"
+    puts "RAILS ENV: #{ENV["RAILS_ENV"]}"
+    #Localhost
+    config.omniauth :facebook, "859131540790031", "81be9672750f8cc9a430b8a73ccc1bfb", provider_ignores_state: true
+  end
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
