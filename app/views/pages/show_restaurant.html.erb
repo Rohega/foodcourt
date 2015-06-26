@@ -30,7 +30,19 @@
         <strong><%= @restaurant.name %></strong>
       </h2>
       <hr>
-      <%= @restaurants %>
+      <% @restaurant.dishs.each do |dish| %>
+          <div class="col-sm-12 text-center">
+            <div style="float: left">
+              <%= image_tag(dish.photo.url(:medium), :class => "img-responsive") %>
+            </div>
+            <div style="float: right; width: 860px">
+              <p><%= dish.description %></p>
+            </div>
+            <h3><%= dish.name %>
+              <small>$<%= dish.price %></small>
+            </h3>
+          </div>
+      <% end %>
     </div>
   </div>
 </div>
